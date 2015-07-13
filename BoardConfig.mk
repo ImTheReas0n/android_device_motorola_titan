@@ -30,7 +30,7 @@ TARGET_OTA_ASSERT_DEVICE := titan,titan_umts,titan_udstv,titan_umtsds,titan_reta
 TARGET_BOARD_INFO_FILE := device/motorola/titan/board-info.txt
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/custommkbootimg.mk
 TARGET_KERNEL_CONFIG := titan_defconfig
 
 # Partitions
@@ -39,8 +39,12 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10526720
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1157627904
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 5912772608
 
-# Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+# TWRP
+DEVICE_RESOLUTION := 720x1280
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_NO_USB_STORAGE := true
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/twrp.fstab
 
 # inherit from the proprietary version
 -include vendor/motorola/titan/BoardConfigVendor.mk
